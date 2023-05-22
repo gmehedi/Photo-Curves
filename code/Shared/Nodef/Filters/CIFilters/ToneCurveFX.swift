@@ -12,6 +12,7 @@ class ToneCurveFX: FilterX {
     @Published var channel:String = "Red"
     
     var cp: CurvePoints = CurvePoints()
+    var wcp: CurvePoints = CurvePoints()
     var rcp: CurvePoints = CurvePoints()
     var gcp: CurvePoints = CurvePoints()
     var bcp: CurvePoints = CurvePoints()
@@ -50,6 +51,27 @@ class ToneCurveFX: FilterX {
         case coffsetPoint2
         case coffsetPoint3
         case coffsetPoint4
+        
+        case wpointX0
+        case wpointY0
+        case wpointX1
+        case wpointY1
+        case wpointX2
+        case wpointY2
+        case wpointX3
+        case wpointY3
+        case wpointX4
+        case wpointY4
+        case wcinitialPoint0
+        case wcinitialPoint1
+        case wcinitialPoint2
+        case wcinitialPoint3
+        case wcinitialPoint4
+        case wcoffsetPoint0
+        case wcoffsetPoint1
+        case wcoffsetPoint2
+        case wcoffsetPoint3
+        case wcoffsetPoint4
 
         case rpointX0
         case rpointY0
@@ -240,6 +262,37 @@ class ToneCurveFX: FilterX {
             bcp.coffsetPoint3 = try values.decodeIfPresent(CGSize.self, forKey: .bcoffsetPoint3) ??  CGSize(width: 0.0, height: 0.0)
             bcp.coffsetPoint4 = try values.decodeIfPresent(CGSize.self, forKey: .bcoffsetPoint4) ??  CGSize(width: 0.0, height: 0.0)
         }
+        
+        if channelMode == "RGB"
+            || channelMode == "RGB White"
+            || channelMode == "HSV" {
+            wcp.pointX0 = try values.decodeIfPresent(CGFloat.self, forKey: .wpointX0) ?? 0.0
+            wcp.pointY0 = try values.decodeIfPresent(CGFloat.self, forKey: .wpointY0) ?? 0.0
+            
+            wcp.pointX1 = try values.decodeIfPresent(CGFloat.self, forKey: .wpointX1) ?? 0.0
+            wcp.pointY1 = try values.decodeIfPresent(CGFloat.self, forKey: .wpointY1) ?? 0.0
+            
+            wcp.pointX2 = try values.decodeIfPresent(CGFloat.self, forKey: .wpointX2) ?? 0.0
+            wcp.pointY2 = try values.decodeIfPresent(CGFloat.self, forKey: .wpointY2) ?? 0.0
+            
+            wcp.pointX3 = try values.decodeIfPresent(CGFloat.self, forKey: .wpointX3) ?? 0.0
+            wcp.pointY3 = try values.decodeIfPresent(CGFloat.self, forKey: .wpointY3) ?? 0.0
+                    
+            wcp.pointX4 = try values.decodeIfPresent(CGFloat.self, forKey: .wpointX4) ?? 0.0
+            wcp.pointY4 = try values.decodeIfPresent(CGFloat.self, forKey: .wpointY4) ?? 0.0
+            
+            wcp.cinitialPoint0 = try values.decodeIfPresent(CGSize.self, forKey: .wcinitialPoint0) ??  CGSize(width: 0.0, height: 1.0)
+            wcp.cinitialPoint1 = try values.decodeIfPresent(CGSize.self, forKey: .wcinitialPoint1) ??  CGSize(width: 0.25, height: 0.75)
+            wcp.cinitialPoint2 = try values.decodeIfPresent(CGSize.self, forKey: .wcinitialPoint2) ??  CGSize(width: 0.5, height: 0.5)
+            wcp.cinitialPoint3 = try values.decodeIfPresent(CGSize.self, forKey: .wcinitialPoint3) ??  CGSize(width: 0.75, height: 0.25)
+            wcp.cinitialPoint4 = try values.decodeIfPresent(CGSize.self, forKey: .wcinitialPoint4) ??  CGSize(width: 1.0, height: 1.0)
+
+            wcp.coffsetPoint0 = try values.decodeIfPresent(CGSize.self, forKey: .wcoffsetPoint0) ??  CGSize(width: 0.0, height: 0.0)
+            wcp.coffsetPoint1 = try values.decodeIfPresent(CGSize.self, forKey: .wcoffsetPoint1) ??  CGSize(width: 0.0, height: 0.0)
+            wcp.coffsetPoint2 = try values.decodeIfPresent(CGSize.self, forKey: .wcoffsetPoint2) ??  CGSize(width: 0.0, height: 0.0)
+            wcp.coffsetPoint3 = try values.decodeIfPresent(CGSize.self, forKey: .wcoffsetPoint3) ??  CGSize(width: 0.0, height: 0.0)
+            wcp.coffsetPoint4 = try values.decodeIfPresent(CGSize.self, forKey: .wcoffsetPoint4) ??  CGSize(width: 0.0, height: 0.0)
+        }
 
     }
     
@@ -362,6 +415,35 @@ class ToneCurveFX: FilterX {
             try container.encode(bcp.coffsetPoint3, forKey: .bcoffsetPoint3)
             try container.encode(bcp.coffsetPoint4, forKey: .bcoffsetPoint4)
         }
+        
+        if channelMode == "RGB" || channelMode == "RGB White" || channelMode == "HSV" {
+            try container.encode(wcp.pointX0, forKey: .wpointX0)
+            try container.encode(wcp.pointY0, forKey: .wpointY0)
+
+            try container.encode(wcp.pointX1, forKey: .wpointX1)
+            try container.encode(wcp.pointY1, forKey: .wpointY1)
+
+            try container.encode(wcp.pointX2, forKey: .wpointX2)
+            try container.encode(wcp.pointY2, forKey: .wpointY2)
+
+            try container.encode(wcp.pointX3, forKey: .wpointX3)
+            try container.encode(wcp.pointY3, forKey: .wpointY3)
+
+            try container.encode(wcp.pointX4, forKey: .wpointX4)
+            try container.encode(wcp.pointY4, forKey: .wpointY4)
+            
+            try container.encode(wcp.cinitialPoint0, forKey: .wcinitialPoint0)
+            try container.encode(wcp.cinitialPoint1, forKey: .wcinitialPoint1)
+            try container.encode(wcp.cinitialPoint2, forKey: .wcinitialPoint2)
+            try container.encode(wcp.cinitialPoint3, forKey: .wcinitialPoint3)
+            try container.encode(wcp.cinitialPoint4, forKey: .wcinitialPoint4)
+            
+            try container.encode(wcp.coffsetPoint0, forKey: .wcoffsetPoint0)
+            try container.encode(wcp.coffsetPoint1, forKey: .wcoffsetPoint1)
+            try container.encode(wcp.coffsetPoint2, forKey: .wcoffsetPoint2)
+            try container.encode(wcp.coffsetPoint3, forKey: .wcoffsetPoint3)
+            try container.encode(wcp.coffsetPoint4, forKey: .wcoffsetPoint4)
+        }
     }
     
     var tonecurveRCIFilter:CIFilter?
@@ -435,7 +517,8 @@ class ToneCurveFX: FilterX {
         else if channelMode == "RGB"
             || channelMode == "RGB Red"
             || channelMode == "RGB Green"
-            || channelMode == "RGB Blue" {
+            || channelMode == "RGB Blue"
+            || channelMode == "RGB White" {
             
             if ciFilter != nil {
                 currentCombineRGBCIFilter = ciFilter as! CICombineRGBFilter
@@ -445,6 +528,7 @@ class ToneCurveFX: FilterX {
             }
             
             
+         
             let tonecurveR = tonecurveRCIFilter != nil ? tonecurveRCIFilter! : CIFilter(name: type)!
             tonecurveR.setValue(ciImage, forKey: kCIInputImageKey)
            
@@ -472,9 +556,7 @@ class ToneCurveFX: FilterX {
             tonecurveB.setValue(CIVector(x:bcp.pointX3,y:bcp.pointY3), forKey: "inputPoint3")
             tonecurveB.setValue(CIVector(x:bcp.pointX4,y:bcp.pointY4), forKey: "inputPoint4")
             
-            currentCombineRGBCIFilter!.inputImageR = tonecurveR.outputImage
-            currentCombineRGBCIFilter!.inputImageG = tonecurveG.outputImage
-            currentCombineRGBCIFilter!.inputImageB = tonecurveB.outputImage
+            
             currentCombineRGBCIFilter!.inputTime = CGFloat(0.0)
             if channelMode == "RGB" {
                 currentCombineRGBCIFilter!.inputMode = CGFloat(0.0)
@@ -487,8 +569,24 @@ class ToneCurveFX: FilterX {
             }
             else if channelMode == "RGB Blue" {
                 currentCombineRGBCIFilter!.inputMode = CGFloat(3.0)
+            }else  if channelMode == "RGB White" {
+                currentCombineRGBCIFilter!.inputMode = CGFloat(4.0)
+                
+                tonecurveR.setValue(CIVector(x:wcp.pointX0,y:wcp.pointY0), forKey: "inputPoint0")
+                tonecurveR.setValue(CIVector(x:wcp.pointX1,y:wcp.pointY1), forKey: "inputPoint1")
+                tonecurveR.setValue(CIVector(x:wcp.pointX2,y:wcp.pointY2), forKey: "inputPoint2")
+                tonecurveR.setValue(CIVector(x:wcp.pointX3,y:wcp.pointY3), forKey: "inputPoint3")
+                tonecurveR.setValue(CIVector(x:wcp.pointX4,y:wcp.pointY4), forKey: "inputPoint4")
             }
 
+            
+          
+            
+            currentCombineRGBCIFilter!.inputImageR = tonecurveR.outputImage
+            currentCombineRGBCIFilter!.inputImageG = tonecurveG.outputImage
+            currentCombineRGBCIFilter!.inputImageB = tonecurveB.outputImage
+            
+           
             return currentCombineRGBCIFilter!
 
         }

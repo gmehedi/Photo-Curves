@@ -57,9 +57,20 @@ extern "C" { namespace coreimage {
         }
         else if (cm==4)
         {
-            //not used
-            //float3(orgR.r,orgR.g,orgR.b);
-          
+            float4 color = float4(orgR.r,orgG.g,orgB.b, 1);
+            // Convert the color to grayscale using the luminance formula
+            float grayscale = dot(color.rgb, float3(0.2989, 0.5870, 0.1140));
+            
+            // Apply the tone curve adjustment
+            float adjustedColor = grayscale;
+            
+            // Map white to black using the CIToneCurve curve
+            float4 toneCurve = float4(0.0, 0.0, 0.0, 0.0); // Set the tone curve values to map white to black
+            
+            // Apply the tone curve adjustment to the color
+            float4 finalColor = mix(color, toneCurve, adjustedColor);
+            
+            return finalColor;
         }
         
         
@@ -73,3 +84,18 @@ extern "C" { namespace coreimage {
 
 }}
     
+
+//float4 color = float4(orgR.r,orgG.g,orgB.b, 1);
+//// Convert the color to grayscale using the luminance formula
+//   float grayscale = dot(color.rgb, float3(0.2989, 0.5870, 0.1140));
+//
+//   // Apply the tone curve adjustment
+//   float adjustedColor = grayscale;
+//
+//   // Map white to black using the CIToneCurve curve
+//   float4 toneCurve = float4(0.0, 0.0, 0.0, 0.0); // Set the tone curve values to map white to black
+//
+//   // Apply the tone curve adjustment to the color
+//   float4 finalColor = mix(color, toneCurve, adjustedColor);
+//
+//   return finalColor;

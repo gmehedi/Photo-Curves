@@ -55,7 +55,7 @@ struct ToneCurvePropertiesViewX: View {
     @EnvironmentObject var appSettings: AppSettings
     
     
-    var channelModeTypes = ["RGB All","RGB","RGB Red","RGB Green","RGB Blue","HSV"]
+    var channelModeTypes = ["RGB All", "RGB","RGB Red","RGB Green","RGB Blue", "RGB White", "HSV"]
     var rgbChannelTypes = ["Red","Green","Blue"]
     var hsvChannelTypes = ["Hue","Saturation","Value"]
 
@@ -75,6 +75,7 @@ struct ToneCurvePropertiesViewX: View {
             }.pickerStyle(.menu)
             .onChange(of: fx.channelMode) { newValue in
                 fx.cp=CurvePoints()
+                fx.wcp=CurvePoints()
                 fx.rcp=CurvePoints()
                 fx.gcp=CurvePoints()
                 fx.bcp=CurvePoints()
@@ -118,6 +119,9 @@ struct ToneCurvePropertiesViewX: View {
             else if fx.channel=="Blue" {
                 PhotoCurvePropertiesViewX(fx: fx, cp: fx.bcp,  parent: parent)
                     .environmentObject(appSettings)
+            }else if fx.channel=="White" {
+                PhotoCurvePropertiesViewX(fx: fx, cp: fx.wcp,  parent: parent)
+                    .environmentObject(appSettings)
             }
 
         }
@@ -151,6 +155,10 @@ struct ToneCurvePropertiesViewX: View {
                 PhotoCurvePropertiesViewX(fx: fx, cp: fx.bcp,  parent: parent)
                     .environmentObject(appSettings)
             }
+        else if fx.channelMode == "RGB White"{
+            PhotoCurvePropertiesViewX(fx: fx, cp: fx.wcp,  parent: parent)
+                .environmentObject(appSettings)
+        }
     }
 
     func applyFilter() {

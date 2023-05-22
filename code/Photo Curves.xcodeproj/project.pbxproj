@@ -949,10 +949,10 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 2;
-				DEVELOPMENT_TEAM = B93L2R82PL;
+				DEVELOPMENT_TEAM = 92L57X7YGH;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = iOS/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -961,7 +961,7 @@
 				MTLLINKER_FLAGS = "-cikernel";
 				MTL_COMPILER_FLAGS = "";
 				"MTL_COMPILER_FLAGS[sdk=*]" = "-fcikernel";
-				PRODUCT_BUNDLE_IDENTIFIER = com.photorealityar.photocurves;
+				PRODUCT_BUNDLE_IDENTIFIER = com.photorealityar.photocurvescx;
 				PRODUCT_NAME = "Photo Curves";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = iphoneos;
@@ -983,10 +983,10 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 2;
-				DEVELOPMENT_TEAM = B93L2R82PL;
+				DEVELOPMENT_TEAM = 92L57X7YGH;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = iOS/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -995,7 +995,7 @@
 				MTLLINKER_FLAGS = "-cikernel";
 				MTL_COMPILER_FLAGS = "";
 				"MTL_COMPILER_FLAGS[sdk=*]" = "-fcikernel";
-				PRODUCT_BUNDLE_IDENTIFIER = com.photorealityar.photocurves;
+				PRODUCT_BUNDLE_IDENTIFIER = com.photorealityar.photocurvescx;
 				PRODUCT_NAME = "Photo Curves";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = iphoneos;
@@ -1019,7 +1019,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 68;
 				DEAD_CODE_STRIPPING = YES;
-				DEVELOPMENT_TEAM = B93L2R82PL;
+				DEVELOPMENT_TEAM = 92L57X7YGH;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = macOS/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1048,7 +1048,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 68;
 				DEAD_CODE_STRIPPING = YES;
-				DEVELOPMENT_TEAM = B93L2R82PL;
+				DEVELOPMENT_TEAM = 92L57X7YGH;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = macOS/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
